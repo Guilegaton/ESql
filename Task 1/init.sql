@@ -17,8 +17,8 @@ GO
 
 CREATE TABLE Wharehouse(
     WharehouseId INT PRIMARY KEY IDENTITY(1,1),
-    [Name] NVARCHAR(155) NOT NULL,
-    [Address] NVARCHAR(155) NOT NULL
+    [City] NVARCHAR(155) NOT NULL,
+    [State] NVARCHAR(155) NOT NULL
 );
 GO
 
@@ -49,7 +49,8 @@ GO
 CREATE TABLE Driver(
     DriverId INT PRIMARY KEY IDENTITY(1,1),
     FirstName NVARCHAR(24) NOT NULL,
-    LastName NVARCHAR(24) NOT NULL
+    LastName NVARCHAR(24) NOT NULL,
+    Birthdate DATE NOT NULL
 );
 
 CREATE TABLE Truck(
@@ -58,6 +59,7 @@ CREATE TABLE Truck(
     RegistrationNumber NVARCHAR(12) NOT NULL,
     Payload NUMERIC CHECK (Payload >= 0) NOT NULL,
     Volume NUMERIC CHECK (Volume >= 0) NOT NULL,
+    [Year] INT CHECK ([Year] >= 0) NOT NULL,
     FuelConsumption NUMERIC CHECK (FuelConsumption >= 0) NOT NULL
 );
 GO
