@@ -57,10 +57,10 @@ CREATE TABLE Truck(
     TruckId INT PRIMARY KEY IDENTITY(1,1),
     BrandName NVARCHAR(24) NOT NULL,
     RegistrationNumber NVARCHAR(12) NOT NULL,
-    Payload NUMERIC CHECK (Payload >= 0) NOT NULL,
-    Volume NUMERIC CHECK (Volume >= 0) NOT NULL,
     [Year] INT CHECK ([Year] >= 0) NOT NULL,
-    FuelConsumption NUMERIC CHECK (FuelConsumption >= 0) NOT NULL
+    Payload NUMERIC CHECK (Payload >= 0) NOT NULL,
+    FuelConsumption NUMERIC CHECK (FuelConsumption >= 0) NOT NULL,
+    Volume NUMERIC CHECK (Volume >= 0) NOT NULL,
 );
 GO
 
