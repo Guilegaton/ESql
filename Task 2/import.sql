@@ -123,12 +123,14 @@ FETCH NEXT FROM c INTO @CargoId, @Weight, @Volume, @Destination
 --for each agent id, select some data where the agent id equals the current agent id in the cursor
 WHILE (SELECT COUNT(*) FROM Shipment) < 1000
     BEGIN
-		INSERT INTO Shipment(TruckId, DriverId, CargoId, RouteId)
+		INSERT INTO Shipment(TruckId, DriverId, CargoId, RouteId, StartDate, EndDate)
          SELECT TOP 1
 		 TR.TruckId,
 		 TRD.DriverId,
          @CargoId CargoId,
-		 @Destination RouteId
+		 @Destination RouteId,
+         DATEADD(day, (ABS(CHECKSUM(NEWID())) % 32765), 0) StartDate,
+         DATEADD(day, (ABS(CHECKSUM(NEWID())) % 32765 + 32765), 0) EndDate
 		 FROM Truck TR
 		 INNER JOIN TruckDriver TRD ON TRD.TruckId = TR.TruckId
          WHERE TR.Volume >= @Volume AND TR.Payload >= @Weight
