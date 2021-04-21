@@ -79,6 +79,8 @@ CREATE TABLE Shipment(
     DriverId INT NOT NULL,
     CargoId INT NOT NULL,
     RouteId INT NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
     CONSTRAINT fk_Shipment_Truck_TruckId FOREIGN KEY (TruckId) REFERENCES Truck(TruckId),
     CONSTRAINT fk_Shipment_Driver_DriverId FOREIGN KEY (DriverId) REFERENCES Driver(DriverId),
     CONSTRAINT fk_Shipment_Cargo_CargoId FOREIGN KEY (CargoId) REFERENCES Cargo(CargoId),
