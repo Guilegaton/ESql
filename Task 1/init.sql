@@ -57,10 +57,10 @@ CREATE TABLE Truck(
     TruckId INT PRIMARY KEY IDENTITY(1,1),
     BrandName NVARCHAR(24) NOT NULL,
     RegistrationNumber NVARCHAR(12) NOT NULL,
-    Payload NUMERIC CHECK (Payload >= 0) NOT NULL,
-    Volume NUMERIC CHECK (Volume >= 0) NOT NULL,
     [Year] INT CHECK ([Year] >= 0) NOT NULL,
-    FuelConsumption NUMERIC CHECK (FuelConsumption >= 0) NOT NULL
+    Payload NUMERIC CHECK (Payload >= 0) NOT NULL,
+    FuelConsumption NUMERIC CHECK (FuelConsumption >= 0) NOT NULL,
+    Volume NUMERIC CHECK (Volume >= 0) NOT NULL,
 );
 GO
 
@@ -79,6 +79,8 @@ CREATE TABLE Shipment(
     DriverId INT NOT NULL,
     CargoId INT NOT NULL,
     RouteId INT NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
     CONSTRAINT fk_Shipment_Truck_TruckId FOREIGN KEY (TruckId) REFERENCES Truck(TruckId),
     CONSTRAINT fk_Shipment_Driver_DriverId FOREIGN KEY (DriverId) REFERENCES Driver(DriverId),
     CONSTRAINT fk_Shipment_Cargo_CargoId FOREIGN KEY (CargoId) REFERENCES Cargo(CargoId),
