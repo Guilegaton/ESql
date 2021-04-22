@@ -2,7 +2,7 @@ USE Shipment;
 GO
 
 BULK INSERT Driver
-FROM 'C:\Users\yulii\source\repos\ESql\Sources\Drivers.csv'
+FROM '--Path--\ESql\Sources\Drivers.csv'
 WITH
 (
     FORMAT = 'CSV', 
@@ -15,7 +15,7 @@ WITH
 GO
 
 BULK INSERT Truck
-FROM 'C:\Users\yulii\source\repos\ESql\Sources\Trucks.csv'
+FROM '--Path--\ESql\Sources\Trucks.csv'
 WITH
 (
     FORMAT = 'CSV', 
@@ -28,7 +28,7 @@ WITH
 GO
 
 BULK INSERT Wharehouse
-FROM 'C:\Users\yulii\source\repos\ESql\Sources\Wharehouse.csv'
+FROM '--Path--\ESql\Sources\Wharehouse.csv'
 WITH
 (
     FORMAT = 'CSV', 
@@ -41,7 +41,7 @@ WITH
 GO
 
 BULK INSERT TruckDriver
-FROM 'C:\Users\yulii\source\repos\ESql\Sources\TruckDriver.csv'
+FROM '--Path--\ESql\Sources\TruckDriver.csv'
 WITH
 (
     FORMAT = 'CSV', 
