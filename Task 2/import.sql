@@ -115,12 +115,10 @@ DECLARE @Destination INT;
 DECLARE @Weight NUMERIC(18,0);
 DECLARE @Volume NUMERIC(18,0);
 
---get the first agent id and place it into a variable
 OPEN c
 FETCH NEXT FROM c INTO @CargoId, @Weight, @Volume, @Destination
 
 
---for each agent id, select some data where the agent id equals the current agent id in the cursor
 WHILE (SELECT COUNT(*) FROM Shipment) < 1000
     BEGIN
 		INSERT INTO Shipment(TruckId, DriverId, CargoId, RouteId, StartDate, EndDate)
@@ -136,9 +134,7 @@ WHILE (SELECT COUNT(*) FROM Shipment) < 1000
          WHERE TR.Volume >= @Volume AND TR.Payload >= @Weight
 		 ORDER BY NEWID()
 
-        --get the next agent
         FETCH NEXT FROM c INTO @CargoId, @Weight, @Volume, @Destination
     END
---clean up
 CLOSE c
 DEALLOCATE c
